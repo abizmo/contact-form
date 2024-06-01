@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@ui/card'
 import { Checkbox } from '@ui/checkbox'
 import {
   Form,
@@ -67,111 +68,123 @@ export function ContactForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className=''>
-        <FormField
-          control={form.control}
-          name='first_name'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>First Name</FormLabel>
-              <FormControl>
-                <Input placeholder='' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='last_name'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Last Name</FormLabel>
-              <FormControl>
-                <Input placeholder='' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='email'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email Address</FormLabel>
-              <FormControl>
-                <Input placeholder='' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='query_type'
-          render={({ field }) => (
-            <FormItem className='space-y-1'>
-              <FormLabel>Query Type</FormLabel>
-              <RadioGroup
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-                className=''
-              >
+    <Card>
+      <Form {...form}>
+        <CardHeader>
+          <CardTitle>Contact Us</CardTitle>
+        </CardHeader>
+        <form onSubmit={form.handleSubmit(onSubmit)} className=''>
+          <CardContent>
+            <FormField
+              control={form.control}
+              name='first_name'
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel className=''>
-                    <FormControl>
-                      <RadioGroupItem value='general' className='sr-only' />
-                    </FormControl>
-                    <span className=''>General</span>
-                  </FormLabel>
+                  <FormLabel>First Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder='' {...field} />
+                  </FormControl>
+                  <FormMessage />
                 </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='last_name'
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel className=''>
-                    <FormControl>
-                      <RadioGroupItem value='support' className='sr-only' />
-                    </FormControl>
-                    <span className=''>Support</span>
-                  </FormLabel>
+                  <FormLabel>Last Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder='' {...field} />
+                  </FormControl>
+                  <FormMessage />
                 </FormItem>
-              </RadioGroup>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='message'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Message</FormLabel>
-              <FormControl>
-                <Textarea placeholder='' className='' {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name='consent'
-          render={({ field }) => (
-            <FormItem className='flex flex-row items-start space-x-3 space-y-0'>
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <div className='space-y-1 leading-none'>
-                <FormLabel>I consent to being contacted by the team</FormLabel>
-              </div>
-            </FormItem>
-          )}
-        />
-        <Button type='submit'>Submit</Button>
-      </form>
-    </Form>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='email'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email Address</FormLabel>
+                  <FormControl>
+                    <Input placeholder='' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='query_type'
+              render={({ field }) => (
+                <FormItem className='space-y-1'>
+                  <FormLabel>Query Type</FormLabel>
+                  <RadioGroup
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    className=''
+                  >
+                    <FormItem>
+                      <FormLabel className=''>
+                        <FormControl>
+                          <RadioGroupItem value='general' className='sr-only' />
+                        </FormControl>
+                        <span className=''>General</span>
+                      </FormLabel>
+                    </FormItem>
+                    <FormItem>
+                      <FormLabel className=''>
+                        <FormControl>
+                          <RadioGroupItem value='support' className='sr-only' />
+                        </FormControl>
+                        <span className=''>Support</span>
+                      </FormLabel>
+                    </FormItem>
+                  </RadioGroup>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='message'
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Message</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder='' className='' {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name='consent'
+              render={({ field }) => (
+                <FormItem className='flex flex-row items-start space-x-3 space-y-0'>
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <div className='space-y-1 leading-none'>
+                    <FormLabel>
+                      I consent to being contacted by the team
+                    </FormLabel>
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </CardContent>
+          <CardFooter>
+            <Button type='submit'>Submit</Button>
+          </CardFooter>
+        </form>
+      </Form>
+    </Card>
   )
 }
