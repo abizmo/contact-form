@@ -68,7 +68,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card>
+    <Card className='max-w-3xl mx-auto mt-8'>
       <Form {...form}>
         <CardHeader>
           <CardTitle>Contact Us</CardTitle>
