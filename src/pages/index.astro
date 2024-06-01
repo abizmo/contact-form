@@ -1,5 +1,6 @@
 ---
 import { ContactForm } from '@/components/contact-form'
+import { Toaster } from '@ui/toaster'
 import '@/styles/globals.css'
 ---
 
@@ -16,5 +17,6 @@ import '@/styles/globals.css'
   <body>
     <h1>Contact Us</h1>
     <ContactForm client:load />
+    <Toaster client:idle />
   </body>
 </html>

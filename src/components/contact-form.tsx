@@ -62,11 +62,7 @@ export function ContactForm() {
     console.log(data)
     toast({
       title: 'Message sent!',
-      description: (
-        <pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
-          <code className='text-white'>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      )
+      description: "Thanks for completing the form. We'll be in touch soon."
     })
   }
 
