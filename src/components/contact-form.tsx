@@ -1,3 +1,5 @@
+// 'use client'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -17,17 +19,25 @@ import { toast } from '@ui/use-toast'
 import { Textarea } from '@ui/textarea'
 
 const contactFormSchema = z.object({
-  first_name: z.string({ required_error: 'This field is required' }),
-  last_name: z.string({ required_error: 'This field is required' }),
+  first_name: z.string().trim().min(1, {
+    message: 'This field is required'
+  }),
+  last_name: z.string().trim().min(1, {
+    message: 'This field is required'
+  }),
   email: z.string().email({
     message: 'Please enter a valid email address'
   }),
   query_type: z.enum(['general', 'support'], {
     required_error: 'Please select a query type'
   }),
-  message: z.string({ required_error: 'This field is required' }),
-  consent: z.boolean({
-    required_error: 'To submit this form, please consent to being contacted'
+  message: z.string().trim().min(1, {
+    message: 'This field is required'
+  }),
+  consent: z.literal(true, {
+    errorMap: () => ({
+      message: 'To submit this form, please consent to being contacted'
+    })
   })
 })
 
@@ -38,7 +48,7 @@ const defaultValues: Partial<ContactFormValues> = {
   last_name: '',
   email: '',
   message: '',
-  consent: false
+  consent: undefined
 }
 
 export function ContactForm() {
@@ -49,6 +59,7 @@ export function ContactForm() {
   })
 
   function onSubmit(data: ContactFormValues) {
+    console.log(data)
     toast({
       title: 'Message sent!',
       description: (
@@ -107,7 +118,6 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem className='space-y-1'>
               <FormLabel>Query Type</FormLabel>
-              <FormMessage />
               <RadioGroup
                 onValueChange={field.onChange}
                 defaultValue={field.value}
@@ -130,6 +140,7 @@ export function ContactForm() {
                   </FormLabel>
                 </FormItem>
               </RadioGroup>
+              <FormMessage />
             </FormItem>
           )}
         />
