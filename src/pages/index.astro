@@ -1,16 +1,20 @@
 ---
-
+import { ContactForm } from '@/components/contact-form'
+import '@/styles/globals.css'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name='generator' content={Astro.generator} />
+
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
+
+    <title>Frontend Mentor | Contact form</title>
+  </head>
+  <body>
+    <h1>Contact Us</h1>
+    <ContactForm />
+  </body>
 </html>
