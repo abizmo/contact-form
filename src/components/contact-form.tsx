@@ -73,7 +73,7 @@ export function ContactForm() {
         <CardHeader>
           <CardTitle>Contact Us</CardTitle>
         </CardHeader>
-        <form onSubmit={form.handleSubmit(onSubmit)} className=''>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent>
             <FormField
               control={form.control}
@@ -123,23 +123,19 @@ export function ContactForm() {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className=''
+                    className='flex flex-wrap'
                   >
-                    <FormItem>
-                      <FormLabel className=''>
-                        <FormControl>
-                          <RadioGroupItem value='general' className='sr-only' />
-                        </FormControl>
-                        <span className=''>General</span>
-                      </FormLabel>
+                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 min-w-max space-y-0 has-[:checked]:bg-background'>
+                      <FormControl>
+                        <RadioGroupItem value='general' />
+                      </FormControl>
+                      <FormLabel className='text-lg'>General Enquiry</FormLabel>
                     </FormItem>
-                    <FormItem>
-                      <FormLabel className=''>
-                        <FormControl>
-                          <RadioGroupItem value='support' className='sr-only' />
-                        </FormControl>
-                        <span className=''>Support</span>
-                      </FormLabel>
+                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 min-w-max space-y-0 has-[:checked]:bg-background'>
+                      <FormControl>
+                        <RadioGroupItem value='support' />
+                      </FormControl>
+                      <FormLabel className='text-lg'>Support Request</FormLabel>
                     </FormItem>
                   </RadioGroup>
                   <FormMessage />
@@ -153,7 +149,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder='' className='' {...field} />
+                    <Textarea placeholder='' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
