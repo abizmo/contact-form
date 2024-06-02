@@ -171,7 +171,7 @@ export function ContactForm() {
                     />
                   </FormControl>
                   <div className='space-y-1 leading-none'>
-                    <FormLabel>
+                    <FormLabel className='normal-case'>
                       I consent to being contacted by the team
                     </FormLabel>
                   </div>
