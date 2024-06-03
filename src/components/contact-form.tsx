@@ -62,7 +62,12 @@ export function ContactForm() {
   function onSubmit(data: ContactFormValues) {
     console.log(data)
     toast({
-      title: 'Message sent!',
+      title: (
+        <p className='flex gap-2'>
+          <img src='/images/icon-success-check.svg' alt='success' />
+          Message sent!
+        </p>
+      ),
       description: "Thanks for completing the form. We'll be in touch soon."
     })
   }
