@@ -70,37 +70,39 @@ export function ContactForm() {
   return (
     <Card className='max-w-3xl mx-auto mt-8'>
       <Form {...form}>
-        <CardHeader>
+        <CardHeader className='mb-8'>
           <CardTitle>Contact Us</CardTitle>
         </CardHeader>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent>
-            <FormField
-              control={form.control}
-              name='first_name'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>First Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder='' {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='last_name'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Last Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder='' {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className='flex flex-wrap gap-x-4'>
+              <FormField
+                control={form.control}
+                name='first_name'
+                render={({ field }) => (
+                  <FormItem className='flex-1 basis-60'>
+                    <FormLabel>First Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder='' {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name='last_name'
+                render={({ field }) => (
+                  <FormItem className='flex-1 basis-60'>
+                    <FormLabel>Last Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder='' {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
               name='email'
@@ -118,20 +120,20 @@ export function ContactForm() {
               control={form.control}
               name='query_type'
               render={({ field }) => (
-                <FormItem className='space-y-1'>
+                <FormItem>
                   <FormLabel>Query Type</FormLabel>
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className='flex flex-wrap'
+                    className='flex flex-wrap gap-4'
                   >
-                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 min-w-max space-y-0 has-[:checked]:bg-background'>
+                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 basis-60 mb-0 space-y-0 has-[:checked]:bg-background'>
                       <FormControl>
                         <RadioGroupItem value='general' />
                       </FormControl>
                       <FormLabel className='text-lg'>General Enquiry</FormLabel>
                     </FormItem>
-                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 min-w-max space-y-0 has-[:checked]:bg-background'>
+                    <FormItem className='border border-input rounded-lg px-6 py-3 flex items-center gap-4 flex-1 basis-60 mb-0 space-y-0 has-[:checked]:bg-background'>
                       <FormControl>
                         <RadioGroupItem value='support' />
                       </FormControl>
@@ -146,7 +148,7 @@ export function ContactForm() {
               control={form.control}
               name='message'
               render={({ field }) => (
-                <FormItem>
+                <FormItem className='mb-10'>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea placeholder='' {...field} />
@@ -159,17 +161,19 @@ export function ContactForm() {
               control={form.control}
               name='consent'
               render={({ field }) => (
-                <FormItem className='flex flex-row items-start space-x-3 space-y-0'>
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                  <div className='space-y-1 leading-none'>
-                    <FormLabel className='normal-case'>
-                      I consent to being contacted by the team
-                    </FormLabel>
+                <FormItem className='mb-10'>
+                  <div className='flex flex-row items-center space-x-3'>
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <div className='space-y-1 leading-none'>
+                      <FormLabel className='normal-case'>
+                        I consent to being contacted by the team
+                      </FormLabel>
+                    </div>
                   </div>
                   <FormMessage />
                 </FormItem>
